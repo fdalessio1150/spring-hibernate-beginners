@@ -1,4 +1,4 @@
-# spring-hibernate-beginners
+# Curso spring-hibernate-beginners
 Curso de spring e hibernate
 
 # Bibliotecas
