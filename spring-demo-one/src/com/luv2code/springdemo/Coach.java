@@ -5,4 +5,7 @@ public interface Coach {
 	public String getDailyWorkout();
 
 	public String getWeeklyWorkout();
+	
+	public String getDailyFortune();
+	
 }
