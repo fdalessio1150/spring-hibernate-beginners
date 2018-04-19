@@ -10,10 +10,12 @@ public class SetterDemoApp {
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		// Sempre executa a criação dos beans que dependemos
-		Coach theCoach = context.getBean("myCricketCoach", Coach.class);
+		CricketCoach theCoach = context.getBean("myCricketCoach", CricketCoach.class);
 		
 		System.out.println(theCoach.getDailyFortune());
 		System.out.println(theCoach.getDailyWorkout());
+		System.out.println(theCoach.getTeam());
+		System.out.println(theCoach.getEmailAddress());
 		
 		context.close();
 	}
