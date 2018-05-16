@@ -2,20 +2,19 @@ package com.luv2code.springdemo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AnnotationDemoApp {
+public class PracticeAnnotationDemoApp {
 
 	public static void main(String[] args) {
-
+		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-		TennisCoach theCoach = context.getBean("tennisCoach", TennisCoach.class);
+		Coach theCoach = context.getBean("pingPongCoach", Coach.class);
 
 		System.out.println(theCoach.getDailyWorkout());
 		System.out.println(theCoach.getDailyFortune());
-		System.out.println(theCoach.getEmail());
-		System.out.println(theCoach.getTeam());
 		
 		context.close();
+
 	}
 
 }

@@ -1,20 +1,41 @@
 package com.luv2code.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+// Mesmo lugar na memoria quando eu crio theCoach e alphaCoach
+@Scope("singleton")
 public class TennisCoach implements Coach {
 
-	private FortuneService fortuneService;
+	@Value("${foo.email}")
+	private String email;
 
+	@Value("${foo.team}")
+	private String team;
+	
+	// Injecao de dependencia pelo campo
+	@Autowired
+	// Caso tivesse outras classes que implementassem a interface FortuneService
+	@Qualifier("randomFortuneService")  
+	private FortuneService fortuneService;
+	
+	public TennisCoach() {
+		System.out.println("Inside default TennisCoach");
+	}
+	
 	// Injecao de dependecia pelo Construtor
+	/*
 	@Autowired
 	public TennisCoach(FortuneService fortuneService) {
 		System.out.println("Inside contructor TennisCoach");
 		this.fortuneService = fortuneService;
 	}
-
+	*/
+	
 	// Injecao de dependecia pelo metodo Set
 	/*
 	@Autowired
@@ -24,7 +45,7 @@ public class TennisCoach implements Coach {
 	}
 	*/
 	
-	// Injecao de dependecia por qualquer nmetodo
+	// Injecao de dependecia por qualquer metodo
 	/*
 	@Autowired
 	public void doSomeCrazyStuff(FortuneService fortuneService) {
@@ -41,6 +62,14 @@ public class TennisCoach implements Coach {
 	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public String getTeam() {
+		return team;
 	}
 
 }
