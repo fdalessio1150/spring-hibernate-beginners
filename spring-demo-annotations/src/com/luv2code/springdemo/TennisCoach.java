@@ -1,5 +1,8 @@
 package com.luv2code.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +29,8 @@ public class TennisCoach implements Coach {
 	public TennisCoach() {
 		System.out.println("Inside default TennisCoach");
 	}
+	
+	// define my detroy method
 	
 	// Injecao de dependecia pelo Construtor
 	/*
@@ -70,6 +75,16 @@ public class TennisCoach implements Coach {
 
 	public String getTeam() {
 		return team;
+	}
+	
+	@PostConstruct
+	public void doMyStartUpStuff() {
+		System.out.println("inside doMyStartupStuff");
+	}
+	
+	@PreDestroy
+	public void doMyCleanUpStuff() {
+		System.out.println("inside doMyCleanUpStuff");
 	}
 
 }
